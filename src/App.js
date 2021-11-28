@@ -24,6 +24,7 @@ function App() {
   }, [dispatch]);
 
   console.log("user:", user);
+  console.log("token:", token);
 
   useEffect(() => {
     initializeSpotifyAccess();
