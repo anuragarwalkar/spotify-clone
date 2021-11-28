@@ -3,10 +3,12 @@ export const initialState = {
   playlists: [],
   playing: false,
   item: null,
+  token: null,
 };
 
 export const actionTypes = {
   SET_USER: "SET_USER",
+  SET_TOKEN: "SET_TOKEN",
 };
 
 const reducer = (state, action) => {
@@ -15,8 +17,13 @@ const reducer = (state, action) => {
   switch (action.type) {
     case actionTypes.SET_USER:
       return {
-        ...initialState,
+        ...state,
         user: action.user,
+      };
+    case actionTypes.SET_TOKEN:
+      return {
+        ...state,
+        token: action.token,
       };
 
     default:

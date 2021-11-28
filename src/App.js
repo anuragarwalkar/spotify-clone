@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 import "./App.scss";
 import { getTokenFromUrlAndReset } from "./config/spotify";
@@ -10,14 +10,13 @@ import Player from "./view/Player/Player";
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const [token, setToken] = useState(null);
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user, token }, dispatch] = useStateValue();
 
   const initializeSpotifyAccess = useCallback(async () => {
     const { access_token: accessToken = null } = getTokenFromUrlAndReset();
 
     if (accessToken) {
-      setToken(accessToken);
+      dispatch({ type: actionTypes.SET_TOKEN, token: accessToken });
       spotify.setAccessToken(accessToken);
       const user = await spotify.getMe();
       dispatch({ type: actionTypes.SET_USER, user });
