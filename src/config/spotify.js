@@ -1,7 +1,10 @@
 // developer.spotify.com
 
 export const authEndpoint = "https://accounts.spotify.com/authorize";
-const redirectUri = "http://localhost:3000/spotify-clone/";
+const isProd = process.env.NODE_ENV === "production";
+const redirectUri = isProd
+  ? "http://anuragarwalkar.github.io/spotify-clone/"
+  : "http://localhost:3000/spotify-clone/";
 const clientId = "88b2a59a96f44f1b84a9b6a9d15ec1cf";
 
 const scopes = [
