@@ -4,7 +4,8 @@ import { getTokenFromUrlAndReset } from "./config/spotify";
 import LoginScreen from "./view/Auth/LoginScreen";
 
 function App() {
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(null);
+
   useEffect(() => {
     const { access_token: token = null } = getTokenFromUrlAndReset();
 
@@ -14,7 +15,11 @@ function App() {
     }
   }, []);
 
-  return <div className="app">{token ? <h1>Player</h1> : <LoginScreen />}</div>;
+  return (
+    <div className="app">
+      {token ? <h1>I'm Logged In 😎</h1> : <LoginScreen />}
+    </div>
+  );
 }
 
 export default App;
