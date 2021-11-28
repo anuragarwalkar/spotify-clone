@@ -18,10 +18,15 @@ function App() {
     if (accessToken) {
       dispatch({ type: actionTypes.SET_TOKEN, token: accessToken });
       spotify.setAccessToken(accessToken);
+
+      // Getting all user details from spotify API
       const user = await spotify.getMe();
-      dispatch({ type: actionTypes.SET_USER, user });
+      if (user) {
+        dispatch({ type: actionTypes.SET_USER, user });
+      }
+
+      // Getting all user playlist from spotify API
       const playlist = await spotify.getUserPlaylists();
-      console.log("playlist:", playlist);
       if (playlist?.items) {
         dispatch({
           type: actionTypes.SET_PLAYLISTS,
