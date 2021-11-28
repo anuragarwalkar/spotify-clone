@@ -1,10 +1,12 @@
 @import "../../scss/base-colors.scss";
 
 .footer {
+  display: flex;
+  justify-content: space-between;
   position: fixed;
   bottom: 0;
   height: 16px;
-  width: 100%;
+  width: 97%;
   color: white;
   background-color: $backgroundBlackFooter;
   padding: 20px;

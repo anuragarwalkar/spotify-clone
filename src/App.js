@@ -20,6 +20,14 @@ function App() {
       spotify.setAccessToken(accessToken);
       const user = await spotify.getMe();
       dispatch({ type: actionTypes.SET_USER, user });
+      const playlist = await spotify.getUserPlaylists();
+      console.log("playlist:", playlist);
+      if (playlist?.items) {
+        dispatch({
+          type: actionTypes.SET_PLAYLISTS,
+          playlists: playlist.items,
+        });
+      }
     }
   }, [dispatch]);
 

@@ -2,10 +2,13 @@ import HomeIcon from "@mui/icons-material/Home";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import SearchIcon from "@mui/icons-material/Search";
 import React from "react";
+import { useStateValue } from "../../store/stateProvider";
 import SidebarOption from "../SidebarOption/SidebarOption";
 import "./sidebar.scss";
 
 function Sidebar() {
+  const [{ playlists }, dispatch] = useStateValue();
+
   return (
     <div className="sidebar">
       <img
@@ -18,12 +21,12 @@ function Sidebar() {
       <SidebarOption Icon={SearchIcon} title="Search" />
       <SidebarOption Icon={LibraryMusicIcon} title="Your Library" />
       <br />
-      <strong className="sidebar__title">PLAYLIST</strong>
+      <strong className="sidebar__title">PLAYLISTS</strong>
       <hr />
 
-      <SidebarOption title="Hip hop" />
-      <SidebarOption title="Rock" />
-      <SidebarOption title="Rmb" />
+      {playlists.map((item) => {
+        return <SidebarOption key={item.id} title={item.name} />;
+      })}
     </div>
   );
 }
