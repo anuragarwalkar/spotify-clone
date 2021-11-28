@@ -1,15 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.scss";
+import { getTokenFromUrlAndReset } from "./config/spotify";
 import LoginScreen from "./view/Auth/LoginScreen";
 
 function App() {
-  useEffect(() => {}, []);
+  const [token, setToken] = useState();
+  useEffect(() => {
+    const { access_token: token = null } = getTokenFromUrlAndReset();
 
-  return (
-    <div className="app">
-      <LoginScreen />
-    </div>
-  );
+    if (token) {
+      console.log("token:", token);
+      setToken(token);
+    }
+  }, []);
+
+  return <div className="app">{token ? <h1>Player</h1> : <LoginScreen />}</div>;
 }
 
 export default App;

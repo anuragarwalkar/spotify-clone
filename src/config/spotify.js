@@ -12,8 +12,8 @@ const scopes = [
   "user-modify-playback-state",
 ];
 
-export const getTokenFromUrl = () => {
-  return window.location.hash
+export const getTokenFromUrlAndReset = () => {
+  const resultObj = window.location.hash
     .substring(1)
     .split("&")
     .reduce((a, b) => {
@@ -21,6 +21,9 @@ export const getTokenFromUrl = () => {
       a[partA] = decodeURIComponent(partB);
       return a;
     }, {});
+
+  window.location.hash = "";
+  return resultObj;
 };
 
 export const loginUrl = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
