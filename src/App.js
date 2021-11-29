@@ -1,9 +1,9 @@
 import { useCallback, useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 import "./App.scss";
-import { getTokenFromUrlAndReset } from "./config/spotify";
 import { actionTypes } from "./store/reducer";
 import { useStateValue } from "./store/stateProvider";
+import { getTokenFromUrlAndReset } from "./utils/utilFunctions";
 import LoginScreen from "./view/Auth/LoginScreen";
 import Player from "./view/Player/Player";
 
@@ -35,9 +35,6 @@ function App() {
       }
     }
   }, [dispatch]);
-
-  console.log("user:", user);
-  console.log("token:", token);
 
   useEffect(() => {
     initializeSpotifyAccess();
