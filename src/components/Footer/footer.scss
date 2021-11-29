@@ -5,9 +5,52 @@
   justify-content: space-between;
   position: fixed;
   bottom: 0;
-  height: 16px;
-  width: 97%;
+  height: 50px;
+  width: 100%;
   color: white;
   background-color: $backgroundBlackFooter;
-  padding: 20px;
+  padding: 10px;
+
+  &__left {
+    flex: 0.3;
+    display: flex;
+    align-items: center;
+  }
+
+  &__albumLogo {
+    height: 50px;
+    width: 50px;
+    margin-right: 15px;
+    object-fit: contain;
+  }
+
+  &__center {
+    flex: 0.4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 100px;
+    max-width: 200px;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    flex: 0.3;
+  }
+
+  &__volume-control {
+    display: flex;
+    align-items: center;
+    flex: 0.5;
+  }
+
+  &__playlist-icon {
+    flex: 0.1;
+    margin-right: 10px;
+  }
+
+  &__volume-down {
+    margin-right: 10px;
+  }
 }

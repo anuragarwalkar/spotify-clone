@@ -1,3 +1,11 @@
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
+import RepeatIcon from "@mui/icons-material/Repeat";
+import ShuffleIcon from "@mui/icons-material/Shuffle";
+import SkipNextIcon from "@mui/icons-material/SkipNext";
+import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
+import VolumeDownIcon from "@mui/icons-material/VolumeDown";
+import { Slider } from "@mui/material";
 import React from "react";
 import "./footer.scss";
 
@@ -5,13 +13,29 @@ function Footer() {
   return (
     <div className="footer">
       <div className="footer__left">
-        <p>Album and song details</p>
+        <img
+          src="https://i.scdn.co/image/ab67616d00001e02f3582107f127c2765fafb431"
+          alt=""
+          className="footer__albumLogo"
+        />
+        <div className="footer__sonfInfo">
+          <h4>Taare Ginn</h4>
+          <p>...</p>
+        </div>
       </div>
       <div className="footer__center">
-        <p>Player Control</p>
+        <ShuffleIcon className="footer__green" />
+        <SkipPreviousIcon className="footer__icon" />
+        <PlayCircleOutlineIcon fontSize="large" className="footer__icon" />
+        <SkipNextIcon className="footer__icon" />
+        <RepeatIcon className="footer__green" />
       </div>
       <div className="footer__right">
-        <p>Volumne controls</p>
+        <PlaylistPlayIcon className="footer__playlist-icon" />
+        <div className="footer__volume-control">
+          <VolumeDownIcon className="footer__volume-down" />
+          <Slider size="small" />
+        </div>
       </div>
     </div>
   );

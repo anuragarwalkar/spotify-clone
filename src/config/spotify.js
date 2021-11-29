@@ -1,6 +1,8 @@
 // developer.spotify.com
 
 export const authEndpoint = "https://accounts.spotify.com/authorize";
+
+// TODO: refactor
 const isProd = process.env.NODE_ENV === "production";
 const redirectUri = isProd
   ? "http://anuragarwalkar.github.io/spotify-clone/"
