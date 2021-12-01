@@ -1,10 +1,10 @@
 import { environment } from "../environment";
 import { environmentProd } from "../environment.prod";
 
-export const isDev = () => process.env.NODE_ENV === "production";
+export const isProd = () => process.env.NODE_ENV === "production";
 
 export const getBaseUrl = () => {
-  return isDev() ? environment.url : environmentProd.url;
+  return isProd() ? environmentProd.url : environment.url;
 };
 
 export const getTokenFromUrlAndReset = () => {

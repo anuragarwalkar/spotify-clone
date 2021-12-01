@@ -17,6 +17,10 @@
     align-items: center;
   }
 
+  &__green {
+    color: $primaryColor;
+  }
+
   &__albumLogo {
     height: 50px;
     width: 50px;
@@ -33,10 +37,26 @@
     max-width: 200px;
   }
 
+  // If there is space between class name and :hover it does not work propely
+  // 😬 works weiredly
+  &__app-icon:hover,
+  &__green:hover {
+    transition: transform 0.2s ease-in-out;
+    transform: scale(1.2) !important;
+  }
+
+  &__sonfInfo {
+    margin-bottom: 5px;
+  }
+
   &__right {
     display: flex;
     align-items: center;
     flex: 0.3;
+
+    *.MuiSlider-root {
+      color: $primaryColor;
+    }
   }
 
   &__volume-control {
