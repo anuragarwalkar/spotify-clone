@@ -38,7 +38,7 @@
   }
 
   // If there is space between class name and :hover it does not work propely
-  // 😬 works weiredly
+  // 😬 works weirdly
   &__app-icon:hover,
   &__green:hover {
     transition: transform 0.2s ease-in-out;
