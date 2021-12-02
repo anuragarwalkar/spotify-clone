@@ -1,10 +1,10 @@
 @import "../../scss/base-colors.scss";
 
 .sidebar {
-  flex: 0.2;
+  flex: 0.1;
   background-color: $sidebarBackgroundColor;
   color: white;
-  min-width: 230px;
+  min-width: 180px;
   padding-left: 10px;
   padding-right: 10px;
 
@@ -14,8 +14,8 @@
     margin: 8px auto;
   }
 
-  img {
-    margin-right: auto;
+  &__logo {
+    width: 70%;
     height: 70px;
     padding: 10px;
   }

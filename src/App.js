@@ -7,10 +7,12 @@ import { getTokenFromUrlAndReset } from "./utils/utilFunctions";
 import LoginScreen from "./view/Auth/LoginScreen";
 import Player from "./view/Player/Player";
 
+// Def values
+const anuragPlaylist = "37i9dQZEVXcQoj4nOi4x4F";
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const [{ user, token }, dispatch] = useStateValue();
+  const [{ token }, dispatch] = useStateValue();
 
   const initializeSpotifyAccess = useCallback(async () => {
     const { access_token: accessToken = null } = getTokenFromUrlAndReset();
@@ -33,12 +35,23 @@ function App() {
           playlists: playlist.items,
         });
       }
+
+      const discoverWeekly = await spotify.getPlaylist(anuragPlaylist);
+
+      if (discoverWeekly) {
+        dispatch({
+          type: actionTypes.SET_DISCOVER_WEEKLY,
+          discoverWeekly: discoverWeekly,
+        });
+      }
     }
   }, [dispatch]);
 
-  useEffect(() => {
+  const onInit = () => {
     initializeSpotifyAccess();
-  }, [initializeSpotifyAccess]);
+  };
+
+  useEffect(onInit, [initializeSpotifyAccess]);
 
   return <div className="app">{token ? <Player /> : <LoginScreen />}</div>;
 }

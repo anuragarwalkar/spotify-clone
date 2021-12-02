@@ -5,8 +5,9 @@
   place-items: center;
   height: 100vh;
   background-color: black;
+  color: white;
 
-  img {
+  &__logo {
     width: 40%;
   }
 

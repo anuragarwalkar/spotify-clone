@@ -1,9 +1,11 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { Avatar } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { useStateValue } from "../../store/stateProvider";
 import "./header.scss";
 
-function Header({ user }) {
+function Header() {
+  const [{ user }] = useStateValue();
   const [userImg, setUserImg] = useState("");
 
   const setUseImageCallback = () => {

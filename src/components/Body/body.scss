@@ -1,5 +1,5 @@
 .body {
-  flex: 0.8;
+  flex: 0.9;
   padding: 15px;
   height: 85vh;
   color: white;
@@ -11,10 +11,31 @@
     padding: 10px;
 
     img {
-      height: 20vw;
+      height: 15vw;
       margin: 0 20px;
-      box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 60px rgba(0, 0, 0, 0.6);
     }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+
+    .MuiSvgIcon-root {
+      margin-right: 20px;
+    }
+  }
+
+  &__shuffle {
+    font-size: 50px !important;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  &__shuffle:hover {
+    transition: 100ms transform ease-in;
+    transform: scale(1.08);
   }
 
   &__infoText {
