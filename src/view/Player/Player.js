@@ -11,7 +11,7 @@ function Player() {
     <div className="player">
       <div className="player__body">
         <Sidebar />
-        <Body />
+        <Body user={user} />
       </div>
       <Footer />
     </div>
