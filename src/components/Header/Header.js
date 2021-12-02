@@ -6,12 +6,16 @@ import "./header.scss";
 function Header({ user }) {
   const [userImg, setUserImg] = useState("");
 
-  useEffect(() => {
-    const [{ url }] = user.images;
-    if (url) {
-      setUserImg(url);
+  const setUseImageCallback = () => {
+    if (user) {
+      const [{ url }] = user.images;
+      if (url) {
+        setUserImg(url);
+      }
     }
-  }, [user]);
+  };
+
+  useEffect(setUseImageCallback, [user]);
 
   return (
     <div className="header">
@@ -21,7 +25,7 @@ function Header({ user }) {
       </div>
       <div className="header__right">
         <Avatar src={userImg} />
-        <h4>{user.display_name}</h4>
+        <h4>{user?.display_name}</h4>
       </div>
     </div>
   );
