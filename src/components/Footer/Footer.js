@@ -14,13 +14,13 @@ function Footer() {
     <div className="footer">
       <div className="footer__left">
         <img
-          src="https://i.scdn.co/image/ab67616d00001e02f3582107f127c2765fafb431"
-          alt=""
+          src="https://i.scdn.co/image/ab67616d0000b2734637341b9f507521afa9a778"
+          alt="Hotel California"
           className="footer__albumLogo"
         />
         <div className="footer__sonfInfo">
-          <h4>Taare Ginn</h4>
-          <p>...</p>
+          <h4>Hotel California</h4>
+          <p>Egales</p>
         </div>
       </div>
       <div className="footer__center">

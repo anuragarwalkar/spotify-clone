@@ -4,6 +4,7 @@ import PlayCircleFilledIcon from "@mui/icons-material/PlayCircleFilled";
 import React from "react";
 import { useStateValue } from "../../store/stateProvider";
 import Header from "../Header/Header";
+import SongRow from "../SongRow/SongRow";
 import "./body.scss";
 
 function Body() {
@@ -14,7 +15,8 @@ function Body() {
     <div className="body">
       <Header />
       <div className="body__info">
-        <img src={url} alt="Discover Weekly" />
+        {discoverWeekly && <img src={url} alt="Discover Weekly" />}
+
         <div className="body__infoText">
           <strong>PLAYLIST</strong>
           <h2>Discover Weekly</h2>
@@ -27,6 +29,10 @@ function Body() {
           <FavoriteIcon fontSize="large" />
           <MoreHorizIcon />
         </div>
+
+        {discoverWeekly?.tracks.items.map((item) => (
+          <SongRow key={item.track.name} track={item.track} />
+        ))}
       </div>
     </div>
   );

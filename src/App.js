@@ -8,7 +8,6 @@ import LoginScreen from "./view/Auth/LoginScreen";
 import Player from "./view/Player/Player";
 
 // Def values
-const anuragPlaylist = "37i9dQZEVXcQoj4nOi4x4F";
 const spotify = new SpotifyWebApi();
 
 function App() {
@@ -29,14 +28,19 @@ function App() {
 
       // Getting all user playlist from spotify API
       const playlist = await spotify.getUserPlaylists();
+
       if (playlist?.items) {
         dispatch({
           type: actionTypes.SET_PLAYLISTS,
           playlists: playlist.items,
         });
       }
-
-      const discoverWeekly = await spotify.getPlaylist(anuragPlaylist);
+      const {
+        playlists: {
+          items: [{ id }],
+        },
+      } = await spotify.searchPlaylists("discover weekly");
+      const discoverWeekly = await spotify.getPlaylist(id);
 
       if (discoverWeekly) {
         dispatch({
