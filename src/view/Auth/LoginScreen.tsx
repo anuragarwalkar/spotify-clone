@@ -7,8 +7,6 @@ function LoginScreen() {
     <div className="login">
       <SpotifyLogo className="login__logo" />
       <a href={loginUrl}>LOGIN WITH SPOTIFY</a>
-      {/* Spotify logo */}
-      {/* Login with spotify button */}
     </div>
   );
 }
