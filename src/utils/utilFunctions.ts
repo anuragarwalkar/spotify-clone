@@ -11,7 +11,7 @@ export const getTokenFromUrlAndReset = () => {
   const resultObj = window.location.hash
     .substring(1)
     .split("&")
-    .reduce((a, b) => {
+    .reduce((a: any, b: any) => {
       const [partA, partB] = b.split("=");
       a[partA] = decodeURIComponent(partB);
       return a;

@@ -13,7 +13,17 @@ export const actionTypes = {
   SET_DISCOVER_WEEKLY: "SET_DISCOVER_WEEKLY",
 };
 
-const reducer = (state, action) => {
+const reducer = (
+  state: any,
+  action: {
+    type: string;
+    user: any;
+    token: any;
+    playlist: any;
+    discoverWeekly: any;
+    playlists: any;
+  }
+) => {
   switch (action.type) {
     case actionTypes.SET_USER:
       return {

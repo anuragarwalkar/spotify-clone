@@ -5,7 +5,7 @@ import { useStateValue } from "../../store/stateProvider";
 import "./header.scss";
 
 function Header() {
-  const [{ user }] = useStateValue();
+  const [{ user }]: any = useStateValue();
   const [userImg, setUserImg] = useState("");
 
   const setUseImageCallback = () => {

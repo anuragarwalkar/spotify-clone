@@ -8,8 +8,8 @@ import SongRow from "../SongRow/SongRow";
 import "./body.scss";
 
 function Body() {
-  const [{ discoverWeekly }] = useStateValue();
-  const [{ url } = {}] = discoverWeekly?.images || [];
+  const [{ discoverWeekly }]: any = useStateValue();
+  const [{ url }]: any = discoverWeekly?.images || [{}];
 
   return (
     <div className="body">
@@ -30,7 +30,7 @@ function Body() {
           <MoreHorizIcon />
         </div>
 
-        {discoverWeekly?.tracks.items.map((item) => (
+        {discoverWeekly?.tracks.items.map((item: any) => (
           <SongRow key={item.track.name} track={item.track} />
         ))}
       </div>

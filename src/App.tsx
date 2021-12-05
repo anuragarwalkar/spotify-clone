@@ -11,7 +11,7 @@ import Player from "./view/Player/Player";
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const [{ token }, dispatch] = useStateValue();
+  const [{ token }, dispatch]: any = useStateValue();
 
   const initializeSpotifyAccess = useCallback(async () => {
     const { access_token: accessToken = null } = getTokenFromUrlAndReset();

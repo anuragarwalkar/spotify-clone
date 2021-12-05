@@ -1,8 +1,8 @@
 import { createContext, useContext, useReducer } from "react";
 
-export const RootContext = createContext();
+const RootContext = createContext<any>({} as any);
 
-export const StateProvider = ({ initialState, reducer, children }) => {
+export const StateProvider = ({ initialState, reducer, children }: any) => {
   return (
     <RootContext.Provider value={useReducer(reducer, initialState)}>
       {children}

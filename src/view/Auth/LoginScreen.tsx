@@ -1,6 +1,5 @@
-import React from "react";
+import { ReactComponent as SpotifyLogo } from "../../assets/sp_logo.svg";
 import { loginUrl } from "../../config/spotify";
-import { ReactComponent as SpotifyLogo } from "../../sp_logo.svg";
 import "./login.scss";
 
 function LoginScreen() {
