@@ -1,19 +1,15 @@
 import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import SpotifyWebApi from "spotify-web-api-js";
 import "./App.scss";
 import {
-  setDiscoverWeekly,
-  setPlayLists,
+  getDiscoverWeekly,
+  getPlaylists,
+  getUser,
   setToken,
-  setUser,
 } from "./store/reducer";
 import { getTokenFromUrlAndReset } from "./utils/utilFunctions";
 import LoginScreen from "./view/Auth/LoginScreen";
 import Player from "./view/Player/Player";
-
-// Def values
-const spotify = new SpotifyWebApi();
 
 function App() {
   const token = useSelector((state: any) => state.token);
@@ -24,31 +20,9 @@ function App() {
 
     if (accessToken) {
       dispatch(setToken(accessToken));
-
-      spotify.setAccessToken(accessToken);
-
-      // Getting all user details from spotify API
-      const user = await spotify.getMe();
-      if (user) {
-        dispatch(setUser(user));
-      }
-
-      // Getting all user playlist from spotify API
-      const playlist = await spotify.getUserPlaylists();
-
-      if (playlist?.items) {
-        dispatch(setPlayLists(playlist.items));
-      }
-      const {
-        playlists: {
-          items: [{ id }],
-        },
-      } = await spotify.searchPlaylists("discover weekly");
-      const discoverWeekly = await spotify.getPlaylist(id);
-
-      if (discoverWeekly) {
-        dispatch(setDiscoverWeekly(discoverWeekly));
-      }
+      dispatch(getUser());
+      dispatch(getPlaylists());
+      dispatch(getDiscoverWeekly());
     }
   }, [dispatch]);
 
