@@ -1,13 +1,13 @@
 import HomeIcon from "@mui/icons-material/Home";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import SearchIcon from "@mui/icons-material/Search";
+import { useSelector } from "react-redux";
 import { ReactComponent as SpotifyLogo } from "../../assets/sp_logo.svg";
-import { useStateValue } from "../../store/stateProvider";
 import SidebarOption from "../SidebarOption/SidebarOption";
 import "./sidebar.scss";
 
 function Sidebar() {
-  const [{ playlists }]: any = useStateValue();
+  const playlists = useSelector((state: any) => state.playlists);
 
   return (
     <div className="sidebar">

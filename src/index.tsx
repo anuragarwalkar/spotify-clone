@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 import App from "./App";
 import "./index.scss";
-import reducer, { initialState } from "./store/reducer";
-import { StateProvider } from "./store/stateProvider";
+import store from "./store";
 
 ReactDOM.render(
   <React.StrictMode>
-    <StateProvider initialState={initialState} reducer={reducer}>
+    <Provider store={store}>
       <App />
-    </StateProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

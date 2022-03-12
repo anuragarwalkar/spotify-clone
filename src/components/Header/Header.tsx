@@ -1,11 +1,11 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { Avatar } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { useStateValue } from "../../store/stateProvider";
+import { useSelector } from "react-redux";
 import "./header.scss";
 
 function Header() {
-  const [{ user }]: any = useStateValue();
+  const user = useSelector((state: any) => state.user);
   const [userImg, setUserImg] = useState("");
 
   const setUseImageCallback = () => {

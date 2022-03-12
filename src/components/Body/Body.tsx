@@ -2,13 +2,14 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import PlayCircleFilledIcon from "@mui/icons-material/PlayCircleFilled";
 import React from "react";
-import { useStateValue } from "../../store/stateProvider";
+import { useSelector } from "react-redux";
 import Header from "../Header/Header";
 import SongRow from "../SongRow/SongRow";
 import "./body.scss";
 
 function Body() {
-  const [{ discoverWeekly }]: any = useStateValue();
+  const discoverWeekly = useSelector((state: any) => state.discoverWeekly);
+
   const [{ url }]: any = discoverWeekly?.images || [{}];
 
   return (

@@ -1,3 +1,5 @@
+import { createSlice } from '@reduxjs/toolkit';
+
 export const initialState = {
   user: null,
   playlists: [],
@@ -6,50 +8,40 @@ export const initialState = {
   token: null,
 };
 
-export const actionTypes = {
-  SET_USER: "SET_USER",
-  SET_TOKEN: "SET_TOKEN",
-  SET_PLAYLISTS: "SET_PLAYLISTS",
-  SET_DISCOVER_WEEKLY: "SET_DISCOVER_WEEKLY",
-};
-
-const reducer = (
-  state: any,
-  action: {
-    type: string;
-    user: any;
-    token: any;
-    playlist: any;
-    discoverWeekly: any;
-    playlists: any;
-  }
-) => {
-  switch (action.type) {
-    case actionTypes.SET_USER:
+// Slice
+const slice = createSlice({
+  name: 'main',
+  initialState: initialState,
+  reducers: {
+    setUser: (state, action) => {
       return {
         ...state,
-        user: action.user,
+        user: action.payload,
       };
-    case actionTypes.SET_TOKEN:
+    },
+    setToken: (state, action) => {
       return {
         ...state,
-        token: action.token,
+        token: action.payload,
       };
-
-    case actionTypes.SET_PLAYLISTS:
+    },
+    setPlayLists: (state, action) => {
+       return {
+        ...state,
+        playlists: action.payload,
+      };
+    },
+    setDiscoverWeekly: (state, action) => {
       return {
         ...state,
-        playlists: action.playlists,
+        discoverWeekly: action.payload,
       };
+    }
+  },
+});
 
-    case actionTypes.SET_DISCOVER_WEEKLY:
-      return {
-        ...state,
-        discoverWeekly: action.discoverWeekly,
-      };
-    default:
-      return state;
-  }
-};
 
-export default reducer;
+export default slice.reducer
+export const { setUser, setToken, setPlayLists, setDiscoverWeekly } = slice.actions
+
+

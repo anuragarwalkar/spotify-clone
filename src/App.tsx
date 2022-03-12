@@ -1,8 +1,13 @@
 import { useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import SpotifyWebApi from "spotify-web-api-js";
 import "./App.scss";
-import { actionTypes } from "./store/reducer";
-import { useStateValue } from "./store/stateProvider";
+import {
+  setDiscoverWeekly,
+  setPlayLists,
+  setToken,
+  setUser,
+} from "./store/reducer";
 import { getTokenFromUrlAndReset } from "./utils/utilFunctions";
 import LoginScreen from "./view/Auth/LoginScreen";
 import Player from "./view/Player/Player";
@@ -11,29 +16,28 @@ import Player from "./view/Player/Player";
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const [{ token }, dispatch]: any = useStateValue();
+  const token = useSelector((state: any) => state.token);
+  const dispatch = useDispatch();
 
   const initializeSpotifyAccess = useCallback(async () => {
     const { access_token: accessToken = null } = getTokenFromUrlAndReset();
 
     if (accessToken) {
-      dispatch({ type: actionTypes.SET_TOKEN, token: accessToken });
+      dispatch(setToken(accessToken));
+
       spotify.setAccessToken(accessToken);
 
       // Getting all user details from spotify API
       const user = await spotify.getMe();
       if (user) {
-        dispatch({ type: actionTypes.SET_USER, user });
+        dispatch(setUser(user));
       }
 
       // Getting all user playlist from spotify API
       const playlist = await spotify.getUserPlaylists();
 
       if (playlist?.items) {
-        dispatch({
-          type: actionTypes.SET_PLAYLISTS,
-          playlists: playlist.items,
-        });
+        dispatch(setPlayLists(playlist.items));
       }
       const {
         playlists: {
@@ -43,10 +47,7 @@ function App() {
       const discoverWeekly = await spotify.getPlaylist(id);
 
       if (discoverWeekly) {
-        dispatch({
-          type: actionTypes.SET_DISCOVER_WEEKLY,
-          discoverWeekly: discoverWeekly,
-        });
+        dispatch(setDiscoverWeekly(discoverWeekly));
       }
     }
   }, [dispatch]);
