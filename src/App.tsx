@@ -17,7 +17,6 @@ function App() {
 
   const initializeSpotifyAccess = useCallback(async () => {
     const { access_token: accessToken = null } = getTokenFromUrlAndReset();
-
     if (accessToken) {
       dispatch(setToken(accessToken));
       dispatch(getUser());
